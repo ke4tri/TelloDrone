@@ -22,6 +22,10 @@ function isCw(line) {
     return line.startsWith("cw");
 }
 
+function isCcw(line) {
+    return line.startsWith("cw");
+}
+
 function isRight(line) {
     return line.startsWith("right");
 }
@@ -63,6 +67,11 @@ class CommandParser {
             if (isCw(line)) {
                 const [, dist] = line.split(" ");
                 config.onCw(dist);
+                return true;
+            }
+            if (isCcw(line)) {
+                const [, dist] = line.split(" ");
+                config.onCcw(dist);
                 return true;
             }
             if (isLeft(line)) {

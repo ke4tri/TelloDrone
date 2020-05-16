@@ -39,6 +39,9 @@ function getSocket() {
         onCw: async (dist) => {
             await cmder.sendCw(dist);
         },
+        onCCw: async (dist) => {
+            await cmder.sendCCw(dist);
+        },
         onLeft: async (dist) => {
             await cmder.sendLeft(dist);
         },

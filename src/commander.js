@@ -77,6 +77,18 @@ class Commander {
         });
     }
 
+    sendCCw(distance = 20) {
+        return new Promise((resolve) => {
+            this.socket.send(`ccw ${distance}`, 0, `ccw ${distance}`.length, this.port, this.host, (err) => {
+                if (err) {
+                    throw err;
+                } else {
+                    return resolve();
+                }
+            });
+        });
+    }
+
     sendLeft(distance = 20) {
         return new Promise((resolve) => {
             this.socket.send(`left ${distance}`, 0, `left ${distance}`.length, this.port, this.host, (err) => {
