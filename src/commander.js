@@ -29,6 +29,18 @@ class Commander {
         });
     }
 
+    sendEmergency() {
+        return new Promise((resolve) => {
+            this.socket.send("emergency", 0, "emergency".length, this.port, this.host, (err) => {
+                if (err) {
+                    throw err;
+                } else {
+                    return resolve();
+                }
+            });
+        });
+    }
+
     sendForward(distance = 20) {
         return new Promise((resolve) => {
             this.socket.send(`forward ${distance}`, 0, `forward ${distance}`.length, this.port, this.host, (err) => {

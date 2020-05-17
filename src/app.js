@@ -15,7 +15,6 @@ function getSocket() {
     socket.bind(TELLO_CMD_PORT);
     return socket;
 }
-
 (async function start() {
     const socket = getSocket();
     const cmder = new Commander(socket, TELLO_HOST, TELLO_CMD_PORT);
@@ -29,6 +28,9 @@ function getSocket() {
         },
         onForward: async (dist) => {
             await cmder.sendForward(dist);
+        },
+        onEmergency: async (dist) => {
+            await cmder.sendEmergency(dist);
         },
         onBack: async (dist) => {
             await cmder.sendBack(dist);
@@ -53,6 +55,9 @@ function getSocket() {
         },
     });
     console.log(`Lets get started!`);
+    socket.on("battery", () => {
+        console.log(`battery from dron: ${cmder.getBattery()}`);
+    });
     socket.on("message", (msg) => {
         console.log(`Message from drone: ${msg.toString()}`);
     });

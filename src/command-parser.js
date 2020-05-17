@@ -6,6 +6,10 @@ function isLand(line) {
     return line === "land";
 }
 
+function isEmergency(line) {
+    return line.startsWith("emerg");
+}
+
 function isForward(line) {
     return line.startsWith("forward");
 }
@@ -23,7 +27,7 @@ function isCw(line) {
 }
 
 function isCcw(line) {
-    return line.startsWith("cw");
+    return line.startsWith("ccw");
 }
 
 function isRight(line) {
@@ -49,6 +53,10 @@ class CommandParser {
                 config.onLand();
                 return true;
             }
+            if (isEmergency(line)) {
+                config.onEmergency();
+                return true;
+            }
             if (isForward(line)) {
                 const [, dist] = line.split(" ");
                 config.onForward(dist);
@@ -71,7 +79,7 @@ class CommandParser {
             }
             if (isCcw(line)) {
                 const [, dist] = line.split(" ");
-                config.onCcw(dist);
+                config.onCCw(dist);
                 return true;
             }
             if (isLeft(line)) {
