@@ -29,6 +29,9 @@ function getSocket() {
         onForward: async (dist) => {
             await cmder.sendForward(dist);
         },
+        onForwardX: async (dist) => {
+            await cmder.sendForwardX(dist);
+        },
         onEmergency: async (dist) => {
             await cmder.sendEmergency(dist);
         },

@@ -14,6 +14,10 @@ function isForward(line) {
     return line.startsWith("forward");
 }
 
+// function isForwardX(line) {
+//     return line.startsWith("forwardX");
+// }
+
 function isBack(line) {
     return line.startsWith("back");
 }
@@ -62,6 +66,11 @@ class CommandParser {
                 config.onForward(dist);
                 return true;
             }
+            // if (isForwardX(line)) {
+            //     const [, dist] = line.split(" ");
+            //     config.onForwardX(dist);
+            //     return true;
+            // }
             if (isBack(line)) {
                 const [, dist] = line.split(" ");
                 config.onBack(dist);
