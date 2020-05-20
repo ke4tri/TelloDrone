@@ -14,12 +14,16 @@ function isForward(line) {
     return line.startsWith("forward");
 }
 
-// function isForwardX(line) {
-//     return line.startsWith("forwardX");
-// }
+function isForwardX(line) {
+    return line.startsWith("fX");
+}
 
 function isBack(line) {
     return line.startsWith("back");
+}
+
+function isBackX(line) {
+    return line.startsWith("bX");
 }
 
 function isLeft(line) {
@@ -66,14 +70,19 @@ class CommandParser {
                 config.onForward(dist);
                 return true;
             }
-            // if (isForwardX(line)) {
-            //     const [, dist] = line.split(" ");
-            //     config.onForwardX(dist);
-            //     return true;
-            // }
+            if (isForwardX(line)) {
+                const [, dist] = line.split(" ");
+                config.onForwardX(dist);
+                return true;
+            }
             if (isBack(line)) {
                 const [, dist] = line.split(" ");
                 config.onBack(dist);
+                return true;
+            }
+            if (isBackX(line)) {
+                const [, dist] = line.split(" ");
+                config.onBackX(dist);
                 return true;
             }
             if (isRight(line)) {

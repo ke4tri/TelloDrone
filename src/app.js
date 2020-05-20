@@ -38,6 +38,9 @@ function getSocket() {
         onBack: async (dist) => {
             await cmder.sendBack(dist);
         },
+        onBackX: async (dist) => {
+            await cmder.sendBackX(dist);
+        },
         onRight: async (dist) => {
             await cmder.sendRight(dist);
         },
